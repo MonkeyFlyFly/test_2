@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<Fields>
+	<RetFormRule>
+		<code>Cret00SDRS1F1</code>
+		<parentCode/>
+		<fieldType>DOUBLE</fieldType>
+		<isTable>false</isTable>
+		<isRequired>false</isRequired>
+		<tag>Cret00SDRS1F1</tag>
+		<desc>Document Type</desc>
+		<section>com.cacss.itas.ret.returnSDR.StampDuty</section>
+		<i18ncode>com.cacss.itas.ret.returnSDR.S1F1</i18ncode>
+	</RetFormRule>
+	<RetFormRule>
+		<code>Cret00SDRS1F2</code>
+		<parentCode/>
+		<fieldType>DOUBLE</fieldType>
+		<isTable>false</isTable>
+		<isRequired>false</isRequired>
+		<tag>Cret00SDRS1F2</tag>
+		<desc>Quantity</desc>
+		<section>com.cacss.itas.ret.returnSDR.StampDuty</section>
+		<i18ncode>com.cacss.itas.ret.returnSDR.S1F2</i18ncode>
+	</RetFormRule>
+	<RetFormRule>
+		<code>Cret00SDRS1F3</code>
+		<parentCode/>
+		<fieldType>DOUBLE</fieldType>
+		<isTable>false</isTable>
+		<isRequired>false</isRequired>
+		<tag>Cret00SDRS1F3</tag>
+		<desc>Total Amount</desc>
+		<section>com.cacss.itas.ret.returnSDR.StampDuty</section>
+		<i18ncode>com.cacss.itas.ret.returnSDR.S1F3</i18ncode>
+	</RetFormRule>
+	<RetFormRule>
+		<code>Cret00SDRS1F4</code>
+		<parentCode/>
+		<fieldType>DOUBLE</fieldType>
+		<isTable>false</isTable>
+		<isRequired>false</isRequired>
+		<tag>Cret00SDRS1F4</tag>
+		<desc>Tax Rate (Fixed Tax Amount)</desc>
+		<section>com.cacss.itas.ret.returnSDR.StampDuty</section>
+		<i18ncode>com.cacss.itas.ret.returnSDR.S1F4</i18ncode>
+	</RetFormRule>	
+	<RetFormRule>
+		<code>Cret00SDRS1F5</code>
+		<parentCode/>
+		<fieldType>DOUBLE</fieldType>
+		<isTable>false</isTable>
+		<isRequired>false</isRequired>
+		<tag>Cret00SDRS1F5</tag>
+		<desc>Tax Due </desc>
+		<section>com.cacss.itas.ret.returnSDR.StampDuty</section>
+		<i18ncode>com.cacss.itas.ret.returnSDR.S1F5</i18ncode>
+	</RetFormRule>	
+</Fields>
