@@ -2,19 +2,16 @@ package com.cassca.service;
 
 public class GenerateHtml {
 	private GenerateHtml(){};
-	public static String generateHtml(String returnShortName,String returnName,String[] fields) {
-
-		
+	public static String generateHtml(String returnShortName,String returnFullName,String[] fields,String[] desc) {
+		String prefix= "Cret00";
 		String head_ele="<%@ page language=\"java\" contentType=\"text/html; charset=UTF-8\" pageEncoding=\"UTF-8\"%>\n"
 						+"<%@ include file=\"/WEB-INF/jsp/apex/inc/taglib.jsp\"%>\n"
 						+"<script src=\"${appRoot}/static/ret/js/retCommon.js\" type=\"text/javascript\"></script>\n"
 						+"<link href=\"${appRoot}/static/ret/css/returnfirst_en_us.css\" type=\"text/css\" rel=\"stylesheet\" />\n";
-
-		
 		String fist_ele="<div style=\"text-align: center;\">\n"
 						+"<img src=\"${appRoot}/static/ret/images/image.gif\" />\n"
 						+"<p style=\"font-size: 20px;\">\n"
-						+"<spring:message code=\"com.cacss.itas.ret.return"+returnShortName+"."+returnShortName+"\" text=\""+returnName+"\" />\n"
+						+"<spring:message code=\"com.cacss.itas.ret.return"+returnShortName+"."+returnShortName+"\" text=\""+returnFullName+"\" />\n"
 						+"</p>\n"
 						+"</div>\n";
 		String second_ele=
@@ -24,7 +21,7 @@ public class GenerateHtml {
 						"			<a class='accordion-toggle' data-toggle='collapse'\n"+
 						"				data-parent='#accordion2' href='#collapseTwo'> <strong><spring:message\n"+
 						"						code=\"com.cacss.itas.ret.return"+returnShortName+"."+returnShortName+"\"\n"+
-						"						text=\""+returnName+"\" /> </strong>\n"+
+						"						text=\""+returnFullName+"\" /> </strong>\n"+
 						"			</a>\n"+
 						"		</div>\n"+
 						"		<div id='collapseTwo' class='accordion-body collapse in'>\n"+
@@ -46,16 +43,17 @@ public class GenerateHtml {
 		
 
 		StringBuilder sb=new StringBuilder();
+		
 		for (int i = 0; i < fields.length; i++) {
 			sb.append(
 					"<tr class=\"paye4\">\n"+
 							"	<td>\n"+
 							"	<apex:label cls='labelcls' >\n"+
-							"	code=\"com.cacss.itas.ret.return"+returnShortName+"."+fields[i]+"\" text=\""+fields[i]+"\" />\n"+
+							"	<spring:message code=\"com.cacss.itas.ret.return"+returnShortName+"."+fields[i]+"\" text=\""+desc[i]+"\" />\n"+
 							"	</apex:label>\n"+
 							"	</td>\n"+
-							"	<td >\n"+
-							"	<apex:money maxlength=\"14\"  id=\""+fields[i]+"\"  name=\""+fields[i]+"\" value=\"${"+fields[i]+" }\"/>\n"+
+							"	<td>\n"+
+							"	<apex:money maxlength=\"14\" id=\""+prefix+returnShortName+fields[i]+"\" name=\""+prefix+returnShortName+fields[i]+"\" value=\"${"+prefix+returnShortName+fields[i]+" }\"/>\n"+
 							"	</td>\n"+
 							"</tr>\n"
 					);
@@ -122,7 +120,7 @@ public class GenerateHtml {
 		return sb.toString();
 	}
 	public static void main(String[] args) {
-		System.out.println(generateHtml("sd","SD",new String[]{"S1F1","S1F2"}));
+		System.out.println(generateHtml("SDR","SD",new String[]{"S1F1","S1F2"},new String[]{"Document Type","Quantity"}));
 //		System.out.println("\"aaa\"");
 	}
 
