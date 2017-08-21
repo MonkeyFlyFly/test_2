@@ -1,23 +1,20 @@
 package com.cassca.service;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import com.cassca.constants.Calculation;
-import com.cassca.utils.ParseExcel;
-
 public class GenerateHtml {
 	private GenerateHtml(){};
-	public static String generateHtml(String returnShortName,String returnFullName,Map map) {
+	public static String generateHtml(String returnShortName,String returnName,String[] fields) {
+
+		
 		String head_ele="<%@ page language=\"java\" contentType=\"text/html; charset=UTF-8\" pageEncoding=\"UTF-8\"%>\n"
 						+"<%@ include file=\"/WEB-INF/jsp/apex/inc/taglib.jsp\"%>\n"
 						+"<script src=\"${appRoot}/static/ret/js/retCommon.js\" type=\"text/javascript\"></script>\n"
 						+"<link href=\"${appRoot}/static/ret/css/returnfirst_en_us.css\" type=\"text/css\" rel=\"stylesheet\" />\n";
+
+		
 		String fist_ele="<div style=\"text-align: center;\">\n"
 						+"<img src=\"${appRoot}/static/ret/images/image.gif\" />\n"
 						+"<p style=\"font-size: 20px;\">\n"
-						+"<spring:message code=\"com.cacss.itas.ret.return"+returnShortName+"."+returnShortName+"\" text=\""+returnFullName+"\" />\n"
+						+"<spring:message code=\"com.cacss.itas.ret.return"+returnShortName+"."+returnShortName+"\" text=\""+returnName+"\" />\n"
 						+"</p>\n"
 						+"</div>\n";
 		String second_ele=
@@ -27,7 +24,7 @@ public class GenerateHtml {
 						"			<a class='accordion-toggle' data-toggle='collapse'\n"+
 						"				data-parent='#accordion2' href='#collapseTwo'> <strong><spring:message\n"+
 						"						code=\"com.cacss.itas.ret.return"+returnShortName+"."+returnShortName+"\"\n"+
-						"						text=\""+returnFullName+"\" /> </strong>\n"+
+						"						text=\""+returnName+"\" /> </strong>\n"+
 						"			</a>\n"+
 						"		</div>\n"+
 						"		<div id='collapseTwo' class='accordion-body collapse in'>\n"+
@@ -39,24 +36,39 @@ public class GenerateHtml {
 						"						<td class='tdvat1'></td>\n"+
 						"						<td class='tdvat2'></td>\n"+
 						"					</tr>\n";
+						
+		
+		
+		
+
+		
+		
+		
 
 		StringBuilder sb=new StringBuilder();
-		Iterator it = map.entrySet().iterator();
-		while(it.hasNext()){
-			Entry entry=(Entry)it.next();
+		for (int i = 0; i < fields.length; i++) {
 			sb.append(
 					"<tr class=\"paye4\">\n"+
 							"	<td>\n"+
 							"	<apex:label cls='labelcls' >\n"+
-							"	<spring:message code=\"com.cacss.itas.ret.return"+returnShortName+"."+entry.getKey()+"\" text=\""+entry.getValue()+"\" />\n"+
+							"	code=\"com.cacss.itas.ret.return"+returnShortName+"."+fields[i]+"\" text=\""+fields[i]+"\" />\n"+
 							"	</apex:label>\n"+
 							"	</td>\n"+
-							"	<td>\n"+
-							"	<apex:money maxlength=\"14\" id=\""+Calculation.PREFIX+returnShortName+entry.getKey()+"\" name=\""+Calculation.PREFIX+returnShortName+entry.getKey()+"\" value=\"${"+Calculation.PREFIX+returnShortName+entry.getKey()+" }\"/>\n"+
+							"	<td >\n"+
+							"	<apex:money maxlength=\"14\"  id=\""+fields[i]+"\"  name=\""+fields[i]+"\" value=\"${"+fields[i]+" }\"/>\n"+
 							"	</td>\n"+
 							"</tr>\n"
 					);
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		String end_ele ="</div>\n</div>\n</div>\n</div>\n";
 		String script_ele=
 		"<script type='text/javascript'>\n"+
@@ -106,11 +118,12 @@ public class GenerateHtml {
 		"}\n"+
 		"</script>\n";
 		
-		String wholeEle=head_ele+fist_ele+second_ele+sb.toString()+end_ele+script_ele;
-		return wholeEle;
+		
+		return sb.toString();
 	}
 	public static void main(String[] args) {
-		Map map = ParseExcel.parseExcel_1();
-		System.out.println(generateHtml("SDR","Stamp Duty(2)",map));
+		System.out.println(generateHtml("sd","SD",new String[]{"S1F1","S1F2"}));
+//		System.out.println("\"aaa\"");
 	}
+
 }
