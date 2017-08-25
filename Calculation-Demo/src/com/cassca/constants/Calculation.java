@@ -2,6 +2,7 @@ package com.cassca.constants;
 
 public class Calculation {
 	public static final String EXCEL_PATH_NAME="/template/template.xlsx";
+	public static final String IMG_PATH_NAME="/img";
 	public static final String PREFIX= "Cret00";
 	public static final String INSERT_TRET09_TAXTYPE = "TRET09_TAXTYPE";
 	public static final String INSERT_TRET11_RETURN_TYPE = "TRET11_RETURN_TYPE";

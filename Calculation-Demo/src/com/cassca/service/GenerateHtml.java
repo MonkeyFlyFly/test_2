@@ -1,9 +1,15 @@
 package com.cassca.service;
 
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import com.cassca.constants.Calculation;
+import com.cassca.utils.ParseExcel;
+
 public class GenerateHtml {
 	private GenerateHtml(){};
-	public static String generateHtml(String returnShortName,String returnFullName,String[] fields,String[] desc) {
-		String prefix= "Cret00";
+	public static String generateHtml(String returnShortName,String returnFullName,Map map) {
 		String head_ele="<%@ page language=\"java\" contentType=\"text/html; charset=UTF-8\" pageEncoding=\"UTF-8\"%>\n"
 						+"<%@ include file=\"/WEB-INF/jsp/apex/inc/taglib.jsp\"%>\n"
 						+"<script src=\"${appRoot}/static/ret/js/retCommon.js\" type=\"text/javascript\"></script>\n"
@@ -33,40 +39,24 @@ public class GenerateHtml {
 						"						<td class='tdvat1'></td>\n"+
 						"						<td class='tdvat2'></td>\n"+
 						"					</tr>\n";
-						
-		
-		
-		
-
-		
-		
-		
 
 		StringBuilder sb=new StringBuilder();
-		
-		for (int i = 0; i < fields.length; i++) {
+		Iterator it = map.entrySet().iterator();
+		while(it.hasNext()){
+			Entry entry=(Entry)it.next();
 			sb.append(
 					"<tr class=\"paye4\">\n"+
 							"	<td>\n"+
 							"	<apex:label cls='labelcls' >\n"+
-							"	<spring:message code=\"com.cacss.itas.ret.return"+returnShortName+"."+fields[i]+"\" text=\""+desc[i]+"\" />\n"+
+							"	<spring:message code=\"com.cacss.itas.ret.return"+returnShortName+"."+entry.getKey()+"\" text=\""+entry.getValue()+"\" />\n"+
 							"	</apex:label>\n"+
 							"	</td>\n"+
 							"	<td>\n"+
-							"	<apex:money maxlength=\"14\" id=\""+prefix+returnShortName+fields[i]+"\" name=\""+prefix+returnShortName+fields[i]+"\" value=\"${"+prefix+returnShortName+fields[i]+" }\"/>\n"+
+							"	<apex:money maxlength=\"14\" id=\""+Calculation.PREFIX+returnShortName+entry.getKey()+"\" name=\""+Calculation.PREFIX+returnShortName+entry.getKey()+"\" value=\"${"+Calculation.PREFIX+returnShortName+entry.getKey()+" }\"/>\n"+
 							"	</td>\n"+
 							"</tr>\n"
 					);
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		String end_ele ="</div>\n</div>\n</div>\n</div>\n";
 		String script_ele=
 		"<script type='text/javascript'>\n"+
@@ -116,12 +106,11 @@ public class GenerateHtml {
 		"}\n"+
 		"</script>\n";
 		
-		
-		return sb.toString();
+		String wholeEle=head_ele+fist_ele+second_ele+sb.toString()+end_ele+script_ele;
+		return wholeEle;
 	}
 	public static void main(String[] args) {
-		System.out.println(generateHtml("SDR","SD",new String[]{"S1F1","S1F2"},new String[]{"Document Type","Quantity"}));
-//		System.out.println("\"aaa\"");
+		Map map = ParseExcel.parseExcel_1();
+		System.out.println(generateHtml("SDR","Stamp Duty(2)",map));
 	}
-
 }

@@ -2,9 +2,14 @@ package com.cassca.layout;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -12,7 +17,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.plaf.LabelUI;
 
+import com.cassca.constants.Calculation;
 import com.cassca.utils.SpiltData;
 
 public class MainLayout {
@@ -50,7 +57,7 @@ public class MainLayout {
 		panel.setLayout(null);
 
 		// 创建 JLabel
-		JLabel userLabel = new JLabel("Return Short Name:");
+		JLabel userLabel = new JLabel("Return Name:");
 		/*
 		 * 这个方法定义了组件的位置。 setBounds(x, y, width, height) x 和 y 指定左上角的新位置，由 width
 		 * 和 height 指定新的大小。
@@ -66,20 +73,41 @@ public class MainLayout {
 		panel.add(userText);
 
 		// 输入密码的文本域
-		JLabel passwordLabel = new JLabel("fields:(seperate with '|')");
+		JLabel passwordLabel = new JLabel("Return short Name:");
 		passwordLabel.setBounds(10, 50, 150, 25);
 		panel.add(passwordLabel);
-
-		/*
-		 * 这个类似用于输入的文本域 但是输入的信息会以点号代替，用于包含密码的安全性
-		 */
-		final JTextArea passwordText = new JTextArea();
+		
+		
+		
+		JTextField passwordText = new JTextField(20);
 //		passwordText.setBounds(160, 50, 165, 50);
-		passwordText.setLineWrap(true);        //激活自动换行功能   
-		passwordText.setWrapStyleWord(true);            // 激活断行不断字功能</strong>  
-		JScrollPane sp=new JScrollPane(passwordText);
-		sp.setBounds(160, 50, 165, 50);
-		panel.add(sp,null);
+//		passwordText.setLineWrap(true);        //激活自动换行功能   
+//		passwordText.setWrapStyleWord(true);            // 激活断行不断字功能</strong>  
+//		JScrollPane sp=new JScrollPane(passwordText);
+		passwordText.setBounds(160, 50, 165, 25);
+		panel.add(passwordText);
+		
+		
+		File directory = new File("");
+        String courseFile = null;
+        try{
+        	courseFile = directory.getCanonicalPath();
+        }catch(IOException e){
+        	e.printStackTrace();
+        }
+        File file = new File(courseFile+Calculation.IMG_PATH_NAME);
+        File[] files = file.listFiles();
+        for (File file2 : files) {
+			System.out.println(file.getPath()+file2.getName());
+			Icon icon = new ImageIcon(file.getPath()+file2.getName());
+			JLabel img_1 = new JLabel(icon);
+//			img_1.setBounds(100, 150, 150, 25);
+			panel.add(img_1);
+		}
+		
+		
+
+		
 		
 		// 创建登录按钮
 		JButton loginButton = new JButton("generate fields");
@@ -90,31 +118,10 @@ public class MainLayout {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				String fields = passwordText.getText().toString().trim();
-				List<String> list_fields = SpiltData.SpiltDatas(fields);
 				
 			}
 		});
 		
-		
-		
-		JLabel passwordLabel2 = new JLabel("fields:(seperate with '|')");
-		passwordLabel2.setBounds(10, 150, 150, 25);
-		panel.add(passwordLabel2);
-
-		JTextArea passwordText2 = new JTextArea();
-//		passwordText2.setBounds(160, 150, 165, 50);
-		passwordText.setLineWrap(true);        //激活自动换行功能   
-		passwordText.setWrapStyleWord(true);            // 激活断行不断字功能</strong>  
-		JScrollPane sp2=new JScrollPane(passwordText2);
-		sp2.setBounds(160, 150, 165, 50);
-		panel.add(sp2,null);
-		// 创建登录按钮
-		JButton loginButton2 = new JButton("generate Return");
-		loginButton2.setBounds(10, 180, 140, 25);
-		panel.add(loginButton2);
-				
-	
 	}
 	
 	
