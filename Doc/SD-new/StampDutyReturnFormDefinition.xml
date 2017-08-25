@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<Fields>
+	<RetFormRule>
+		<code>Cret00SDRS1</code>
+		<parentCode/>
+		<fieldType>TABLE</fieldType>
+		<isTable>true</isTable>
+		<isRequired>true</isRequired>
+		<tag>tbl_03</tag>
+		<desc>Table</desc>
+		<section>Stamp Duty (Agency)</section>
+		<i18ncode/>
+	</RetFormRule>	
+	<RetFormRule>
+		<code>Cret00SDRS1F1</code>
+		<parentCode>Cret00SDRS1</parentCode>
+		<fieldType>STRING</fieldType>
+		<isTable>true</isTable>
+		<isRequired>false</isRequired>
+		<tag>Cret00SDRS1F1</tag>
+		<desc>Document Type</desc>
+		<section>com.cacss.itas.ret.returnSDR.StampDuty</section>
+		<i18ncode>com.cacss.itas.ret.returnSDR.S1F1</i18ncode>
+	</RetFormRule>
+	<RetFormRule>
+		<code>Cret00SDRS1F2</code>
+		<parentCode>Cret00SDRS1</parentCode>
+		<fieldType>DOUBLE</fieldType>
+		<isTable>true</isTable>
+		<isRequired>false</isRequired>
+		<tag>Cret00SDRS1F2</tag>
+		<desc>Quantity</desc>
+		<section>com.cacss.itas.ret.returnSDR.StampDuty</section>
+		<i18ncode>com.cacss.itas.ret.returnSDR.S1F2</i18ncode>
+	</RetFormRule>
+	<RetFormRule>
+		<code>Cret00SDRS1F3</code>
+		<parentCode>Cret00SDRS1</parentCode>
+		<fieldType>DOUBLE</fieldType>
+		<isTable>true</isTable>
+		<isRequired>false</isRequired>
+		<tag>Cret00SDRS1F3</tag>
+		<desc>Total Amount</desc>
+		<section>com.cacss.itas.ret.returnSDR.StampDuty</section>
+		<i18ncode>com.cacss.itas.ret.returnSDR.S1F3</i18ncode>
+	</RetFormRule>
+	<RetFormRule>
+		<code>Cret00SDRS1F4</code>
+		<parentCode>Cret00SDRS1</parentCode>
+		<fieldType>DOUBLE</fieldType>
+		<isTable>true</isTable>
+		<isRequired>false</isRequired>
+		<tag>Cret00SDRS1F4</tag>
+		<desc>Tax Rate</desc>
+		<section>com.cacss.itas.ret.returnSDR.StampDuty</section>
+		<i18ncode>com.cacss.itas.ret.returnSDR.S1F4</i18ncode>
+	</RetFormRule>	
+	<RetFormRule>
+		<code>Cret00SDRS1F5</code>
+		<parentCode>Cret00SDRS1</parentCode>
+		<fieldType>DOUBLE</fieldType>
+		<isTable>true</isTable>
+		<isRequired>false</isRequired>
+		<tag>Cret00SDRS1F5</tag>
+		<desc>Tax Due </desc>
+		<section>com.cacss.itas.ret.returnSDR.StampDuty</section>
+		<i18ncode>com.cacss.itas.ret.returnSDR.S1F5</i18ncode>
+	</RetFormRule>
+	<RetFormRule>
+		<code>Cret00SDRS1F6</code>
+		<parentCode/>
+		<fieldType>DOUBLE</fieldType>
+		<isTable>false</isTable>
+		<isRequired>false</isRequired>
+		<tag>Cret00SDRS1F6</tag>
+		<desc>Totals</desc>
+		<section>com.cacss.itas.ret.returnSDR.StampDuty</section>
+		<i18ncode>com.cacss.itas.ret.returnSDR.S1F6</i18ncode>
+	</RetFormRule>
+</Fields>
