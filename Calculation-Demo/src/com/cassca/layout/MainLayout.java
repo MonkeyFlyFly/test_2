@@ -88,6 +88,10 @@ public class MainLayout {
 		panel.add(passwordText);
 		
 		
+		JLabel jl_1 = new JLabel("please select template:");
+		jl_1.setBounds(10, 120, 150, 20);
+		panel.add(jl_1);
+		
 		File directory = new File("");
         String courseFile = null;
         try{
@@ -97,12 +101,20 @@ public class MainLayout {
         }
         File file = new File(courseFile+Calculation.IMG_PATH_NAME);
         File[] files = file.listFiles();
+        int i = 1;
         for (File file2 : files) {
-			System.out.println(file.getPath()+file2.getName());
-			Icon icon = new ImageIcon(file.getPath()+file2.getName());
-			JLabel img_1 = new JLabel(icon);
-//			img_1.setBounds(100, 150, 150, 25);
-			panel.add(img_1);
+			System.out.println(file2.getPath());
+			Icon icon = new ImageIcon(file2.getPath());
+			JLabel img_i = new JLabel(icon);
+			if (i==2) {
+				img_i.setBounds(220, 200, 200, 200);
+					
+			}else{
+				
+				img_i.setBounds(10, 200, 200, 200);
+			}
+			panel.add(img_i);
+			i++;
 		}
 		
 		
